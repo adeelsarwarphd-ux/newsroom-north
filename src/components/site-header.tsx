@@ -95,15 +95,13 @@ export function SiteHeader() {
             className="hidden lg:flex flex-1 items-center gap-6"
           >
             {primaryLeft.map((n) => (
-              <Link
+              <a
                 key={n.label}
-                to={n.to as never}
-                params={{}}
+                href={n.to}
                 className="text-[13px] font-semibold uppercase tracking-[0.06em] font-sans text-ink hover:text-standard-red"
-                activeProps={{ style: { color: "var(--color-standard-red)" } }}
               >
                 {n.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
@@ -137,15 +135,13 @@ export function SiteHeader() {
             className="hidden lg:flex flex-1 items-center justify-end gap-6"
           >
             {primaryRight.map((n) => (
-              <Link
+              <a
                 key={n.label}
-                to={n.to as never}
-                params={{}}
+                href={n.to}
                 className="text-[13px] font-semibold uppercase tracking-[0.06em] font-sans text-ink hover:text-standard-red"
-                activeProps={{ style: { color: "var(--color-standard-red)" } }}
               >
                 {n.label}
-              </Link>
+              </a>
             ))}
           </nav>
         </div>
@@ -181,9 +177,7 @@ export function SiteHeader() {
           </Link>
           <nav className="hidden md:flex items-center gap-4 ml-2 text-[12px] font-semibold uppercase tracking-[0.06em] font-sans text-ink-soft">
             {primaryLeft.concat(primaryRight).slice(0, 6).map((n) => (
-              <Link key={n.label} to={n.to as never} params={{}} className="hover:text-ink">
-                {n.label}
-              </Link>
+              <a key={n.label} href={n.to} className="hover:text-ink">{n.label}</a>
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-4 text-[12px] font-semibold uppercase tracking-[0.06em] font-sans text-ink-soft">
@@ -209,15 +203,14 @@ export function SiteHeader() {
           </div>
           <nav className="es-container py-6 flex flex-col divide-y divide-rule">
             {primaryLeft.concat(primaryRight).map((n) => (
-              <Link
+              <a
                 key={n.label}
-                to={n.to as never}
-                params={{}}
+                href={n.to}
                 onClick={() => setMenuOpen(false)}
                 className="py-4 font-serif text-2xl font-bold text-ink"
               >
                 {n.label}
-              </Link>
+              </a>
             ))}
             <div className="py-4 flex flex-wrap gap-4 text-[12px] font-semibold uppercase tracking-[0.06em] font-sans text-ink-soft">
               {secondary.map((s) => (
