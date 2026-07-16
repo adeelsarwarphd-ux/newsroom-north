@@ -11,25 +11,29 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="min-h-screen bg-paper">
+      <SiteHeader />
+      <main className="es-container py-24 text-center">
+        <p className="es-eyebrow es-eyebrow-red mb-4">Error 404</p>
+        <h1 className="es-h-article mx-auto">This page has been retired, moved or was never here.</h1>
+        <p className="es-standfirst mt-6 mx-auto">
+          Try the homepage, browse a section, or search the archive for what you were reading.
         </p>
-        <div className="mt-6">
+        <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-block border border-ink bg-ink px-6 py-3 font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-paper"
           >
-            Go home
+            Return to the front page
           </Link>
         </div>
-      </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
@@ -42,32 +46,30 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+    <div className="min-h-screen bg-paper">
+      <SiteHeader />
+      <main className="es-container py-24 text-center">
+        <p className="es-eyebrow es-eyebrow-red mb-4">Something went wrong</p>
+        <h1 className="es-h-article mx-auto">This page didn't load.</h1>
+        <p className="es-standfirst mt-6 mx-auto">
+          Our servers had a problem serving this story. Try again, or head back to the front page.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            onClick={() => { router.invalidate(); reset(); }}
+            className="border border-ink bg-ink px-6 py-3 font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-paper"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="border border-ink px-6 py-3 font-sans text-[13px] font-semibold uppercase tracking-[0.06em] text-ink"
           >
-            Go home
+            Front page
           </a>
         </div>
-      </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
@@ -77,21 +79,49 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Evening Standard Canada — National news, politics, business and comment" },
+      {
+        name: "description",
+        content:
+          "Independent Canadian journalism. Reporting, analysis and comment on politics, business, culture, sport and city life, from a national newsroom.",
+      },
+      { name: "author", content: "Evening Standard Canada" },
+      { name: "theme-color", content: "#FAF9F6" },
+      { property: "og:site_name", content: "Evening Standard Canada" },
+      { property: "og:title", content: "Evening Standard Canada" },
+      {
+        property: "og:description",
+        content:
+          "Independent Canadian journalism. Reporting, analysis and comment from a national newsroom.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_CA" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@StandardCanada" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NewsMediaOrganization",
+          name: "Evening Standard Canada",
+          url: "/",
+          description:
+            "Independent Canadian journalism from a national newsroom.",
+          areaServed: "CA",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -102,7 +132,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-CA">
       <head>
         <HeadContent />
       </head>
@@ -119,7 +149,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
