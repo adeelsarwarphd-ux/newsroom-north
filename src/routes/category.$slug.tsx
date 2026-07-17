@@ -5,6 +5,7 @@ import { NewsletterModule } from "@/components/newsletter-module";
 import { AdSlot } from "@/components/ad-slot";
 import { SupportingLead, TextStory, LatestRow } from "@/components/story";
 import { categories, articles, articlesByCategory, authors } from "@/content/site";
+import type { Article } from "@/content/site";
 import type { Story } from "@/content/homepage";
 
 export const Route = createFileRoute("/category/$slug")({
@@ -63,11 +64,12 @@ function toStory(a: (typeof articles)[string]): Story {
 }
 
 function CategoryPage() {
-  const { cat, list } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { cat: (typeof import("@/content/site").categories)[string]; list: Article[] };
+  const { cat, list } = data;
   const [featured, ...rest] = list;
   const featStory = toStory(featured);
-  const supporting = rest.slice(0, 4).map(toStory);
-  const feed = rest.slice(4).map(toStory);
+  const supporting: Story[] = rest.slice(0, 4).map(toStory);
+  const feed: Story[] = rest.slice(4).map(toStory);
 
   return (
     <div className="min-h-screen bg-paper">
