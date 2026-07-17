@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Independent Canadian journalism from a national newsroom.",
+          "The day's Canadian news, politics, business, sport, culture and comment — edited by our national newsroom.",
       },
       { property: "og:url", content: "/" },
     ],

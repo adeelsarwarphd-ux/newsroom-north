@@ -79,25 +79,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Evening Standard Canada — National news, politics, business and comment" },
+      { title: "Evening Standard Canada — Front page" },
       {
         name: "description",
         content:
-          "Independent Canadian journalism. Reporting, analysis and comment on politics, business, culture, sport and city life, from a national newsroom.",
+          "The day's Canadian news, politics, business, sport, culture and comment — edited by our national newsroom.",
       },
       { name: "author", content: "Evening Standard Canada" },
       { name: "theme-color", content: "#FAF9F6" },
       { property: "og:site_name", content: "Evening Standard Canada" },
-      { property: "og:title", content: "Evening Standard Canada" },
+      { property: "og:title", content: "Evening Standard Canada — Front page" },
       {
         property: "og:description",
         content:
-          "Independent Canadian journalism. Reporting, analysis and comment from a national newsroom.",
+          "The day's Canadian news, politics, business, sport, culture and comment — edited by our national newsroom.",
       },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_CA" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@StandardCanada" },
+      { name: "twitter:title", content: "Evening Standard Canada — Front page" },
+      { name: "twitter:description", content: "The day's Canadian news, politics, business, sport, culture and comment — edited by our national newsroom." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4121d4af-a9c0-42a1-a479-777c18220f8e/id-preview-24f5cbd0--63c0f4b8-5d55-4604-aac2-bd02fb42302a.lovable.app-1784273941990.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4121d4af-a9c0-42a1-a479-777c18220f8e/id-preview-24f5cbd0--63c0f4b8-5d55-4604-aac2-bd02fb42302a.lovable.app-1784273941990.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
