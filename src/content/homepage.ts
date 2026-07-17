@@ -43,7 +43,7 @@ export const lead: Story = {
     alt: "Parliament Hill in Ottawa at dusk with the Peace Tower silhouetted against a pink sky.",
     credit: "Photograph: Marie-Claire Beaulieu / The Standard",
   },
-  href: "#",
+  href: "/article/carney-cabinet-shuffle",
   type: "reporting",
 };
 
@@ -63,7 +63,7 @@ export const supportingLeads: Story[] = [
       alt: "Aerial view of a pipeline crossing autumn boreal forest.",
       credit: "Photograph: Sebastien Roy / The Standard",
     },
-    href: "#",
+    href: "/article/tmx-pipeline-review",
     type: "reporting",
   },
   {
@@ -81,7 +81,7 @@ export const supportingLeads: Story[] = [
       alt: "Toronto skyline emerging from winter fog.",
       credit: "Photograph: Daniel Cheng / The Standard",
     },
-    href: "#",
+    href: "/article/bay-street-leaner-2026",
     type: "analysis",
   },
 ];
@@ -115,7 +115,7 @@ export const latest: Story[] = [
       "Loblaw posts a slimmer margin, blaming a colder autumn and softer discretionary spending",
     author: "James Okafor",
     publishedAt: "2 hr ago",
-    href: "#",
+    href: "/article/loblaw-margin",
   },
   {
     slug: "l4",
@@ -145,7 +145,7 @@ export const latest: Story[] = [
       "Shopify quietly moves its enterprise AI team to Ottawa, adding 220 jobs",
     author: "Nadia Farooq",
     publishedAt: "5 hr ago",
-    href: "#",
+    href: "/article/shopify-ottawa-ai",
   },
 ];
 
