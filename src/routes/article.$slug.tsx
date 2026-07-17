@@ -5,6 +5,7 @@ import { NewsletterModule } from "@/components/newsletter-module";
 import { AdSlot } from "@/components/ad-slot";
 import { TextStory } from "@/components/story";
 import { articles, authors, categories, articlesByCategory } from "@/content/site";
+import type { Article, ArticleBlock, Author, Category } from "@/content/site";
 import type { Story } from "@/content/homepage";
 
 export const Route = createFileRoute("/article/$slug")({
@@ -75,10 +76,11 @@ export const Route = createFileRoute("/article/$slug")({
 });
 
 function ArticlePage() {
-  const { article, author, category, related } = Route.useLoaderData();
-  const initials = author?.name.split(" ").map((s) => s[0]).slice(0, 2).join("") ?? "TS";
+  const data = Route.useLoaderData() as { article: Article; author: Author | undefined; category: Category | undefined; related: Article[] };
+  const { article, author, category, related } = data;
+  const initials = author?.name.split(" ").map((s: string) => s[0]).slice(0, 2).join("") ?? "TS";
 
-  const relatedStories: Story[] = related.map((a) => {
+  const relatedStories: Story[] = related.map((a: Article) => {
     const au = authors[a.authorSlug];
     return {
       slug: a.slug,

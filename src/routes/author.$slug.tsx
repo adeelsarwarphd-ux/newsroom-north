@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { NewsletterModule } from "@/components/newsletter-module";
 import { TextStory } from "@/components/story";
 import { authors, articlesByAuthor } from "@/content/site";
+import type { Article, Author } from "@/content/site";
 import type { Story } from "@/content/homepage";
 
 export const Route = createFileRoute("/author/$slug")({
@@ -54,9 +55,10 @@ export const Route = createFileRoute("/author/$slug")({
 });
 
 function AuthorPage() {
-  const { author, articles: list } = Route.useLoaderData();
-  const initials = author.name.split(" ").map((s) => s[0]).slice(0, 2).join("");
-  const stories: Story[] = list.map((a) => ({
+  const data = Route.useLoaderData() as { author: Author; articles: Article[] };
+  const { author, articles: list } = data;
+  const initials = author.name.split(" ").map((s: string) => s[0]).slice(0, 2).join("");
+  const stories: Story[] = list.map((a: Article) => ({
     slug: a.slug,
     section: a.categoryLabel,
     sectionHref: `/category/${a.category}`,
